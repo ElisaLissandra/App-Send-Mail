@@ -62,7 +62,7 @@
 
     //Recipients
     $mail->setFrom('testecursos21@gmail.com', 'Teste Curso Remetente');
-    $mail->addAddress('testecursos21@gmail.com', 'Teste Curso Destinatário');     //Add a recipient
+    $mail->addAddress($mensagem->__get('para'));     //Add a recipient
     $mail->addReplyTo('info@example.com', 'Information');
     //$mail->addCC('cc@example.com');
     //$mail->addBCC('bcc@example.com');
@@ -73,9 +73,9 @@
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Oi. Eu sou o assunto';
-    $mail->Body    = 'Oi. Eu sou o conteúdo <strong>e-mail</strong>.';
-    $mail->AltBody = 'Oi. Eu sou o conteúdo e-mail.';
+    $mail->Subject = $mensagem->__get('assunto');
+    $mail->Body    = $mensagem->__get('mensagem');
+    $mail->AltBody = 'É necessário utilizar um client que suporte HTLMvpara ter acesso total ao conteúdo dessa mensagem';
 
     $mail->send();
       echo 'Mensagem enviada com sucesso';
